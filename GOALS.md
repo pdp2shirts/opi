@@ -1,4 +1,4 @@
-# **Detailed Goals for Diamond Bluff**
+# **Detailed Goals for Open Programmable Infrastructure Project**
 
 * Create community-driven standards-based open ecosystem for DPU/IPU-like
   technologies
