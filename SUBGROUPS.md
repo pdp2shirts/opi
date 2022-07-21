@@ -132,10 +132,16 @@
 ## Use Case
 
 * Description & Responsibilities
-  * Create an open channel with the end users and potential deployment partners .
-  * Share the work being done by the groups and get feedback from the deployment partners .
-  * Encourage more deployment partners to contribute , take part and join .
-* Alignment to project goal(s) -- Workgroup leader: Please update this bullet
+  * Create an open channel with the end users and potential deployment partners.
+  * Share the work being done by the subgroups and get feedback from the end users
+      and deployment partners.
+  * Encourage more end users and deployment partners to contribute, take part, and join.
+* Alignment to project goal(s) 
+  * By engaging with and seeking input from end users and deployment partners,
+      the Use Case subgroup will help by validating the implementation examples,
+      architectures, and APIs being worked on in the other subgroups.
+  * This will also help build the open community to include additional 
+    contributors and members.
 * Leader
   * Elad Blatt
 * Meeting Time & Date
