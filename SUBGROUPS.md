@@ -87,7 +87,10 @@
 ## Outreach Committee
 
 * Description & Responsibilities
-  * The charter of the subgroup is where recruiting for additional project members, events coordination, vision discussions, and marketing related activities will take place. sometimes referred to as the project's non-technical, non-governing board activities
+  * The charter of the subgroup is where recruiting for additional project members,
+  events coordination, vision discussions, and marketing related activities will 
+  take place. Sometimes this group is referred to as the project's non-technical, 
+  non-governing board activities committee.
 * Alignment to project goal(s)
   * Establish an open community to support vendor-independent and jointly
     co-developed ecosystem.
