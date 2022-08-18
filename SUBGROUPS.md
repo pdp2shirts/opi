@@ -84,20 +84,18 @@
 * Status
   * Active
 
-## Events and Outreach
+## Outreach Committee
 
 * Description & Responsibilities
-  * The charter of the subgroup is to plan, coordinate, and execute DB
-    community and other industry events as well as lead outreach, marketing,
-    and PR activities for DB
+  * The charter of the subgroup is where recruiting for additional project members, events coordination, vision discussions, and marketing related activities will take place. sometimes referred to as the project's non-technical, non-governing board activities
 * Alignment to project goal(s)
   * Establish an open community to support vendor-independent and jointly
     co-developed ecosystem.
-* Leader
-  * Paul Pindell
+* Leaders
+  * Paul Pindell and Yan Fisher
 * Meeting Time & Date
-  * Wednesdays 7:30-8:00am PT
+  * Tuesdays 7:00-8:00am PT
 * Slack Channel
-  * [events-subgroup](https://opi-project.slack.com/archives/C03462BB1PC)
+  * [outreach-committee](https://opi-project.slack.com/archives/C03U6QQ3PEX)
 * Status
   * Active
