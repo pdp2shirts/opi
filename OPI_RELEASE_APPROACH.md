@@ -40,6 +40,10 @@ pieces of the above release artifacts:
 * Storage
 * Security
 
+### Working Group Specific Release Items
+
+* [Storage](https://github.com/opiproject/opi-api/tree/main/storage#deliverables)
+
 The above example allows for vendors to release their own bindings for
 the APIs as well. For example:
 
