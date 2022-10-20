@@ -6,11 +6,43 @@ relates to the form the project takes, meaning this document is the result of a
 [mailing list discussion](https://lists.opiproject.org/g/tsc/message/30)
 around the OPI release process.
 
+Specifically, the following three approaches were considered as becoming the
+OPI Release Process:
+
+1. Standards documents & Protobuf Models Specifications only
+
+    * Need to verify models (even if this is manual effort)
+    * Even if this is using companies' private labs and private DPUs and IPUs
+    * Similar to CSI, FMDS, T11, T10, etc.
+
+2. Protobuf Specs + Reference releases
+
+    * POC/Reference
+        * Examples:  OPI-Nvidia bridge on BlueField and OPI-Intel bridge on MEV
+          and OPI-Marvell bridge on Octeon
+    * Can be based on OPI-SPDK bridge I built
+    * Releases are un-versioned and just examples
+    * Tools and Clients Examples from some open-source projects: Mockup, CLI
+      Client
+    * Similar to Redfish
+
+3. Full Community Release
+
+    * Testing
+    * Issue tracking & support
+    * Release tracking
+    * Release cadence
+    * Release content
+    * CI/CD and testing
+    * Deploy/installation
+    * Similar to SONiC
+
 ## Proposed Release Approach
 
 This document proposes OPI will start by releasing an API in the form of
 protobuf specs and a reference architecture. **The reference architecture is
-not meant to be used in production.**
+not meant to be used in production.** Note this chosen approach is option
+number 2 from the above list of choices.
 
 The details of what this will look like are as follows:
 
