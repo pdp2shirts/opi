@@ -60,7 +60,7 @@ The details of what this will look like are as follows:
   * CLI based on the gRPC client code
 * Code related to provisioning and lifecycle:
   * OTEL integration poins
-  * sZTP code which may include a custom client
+  * sZTP code which, including a custom client
 * A Container Storage Interface (CSI) library, client and helpful
   utilities called [goopicso](https://github.com/opiproject/goopicsi)
 
@@ -79,6 +79,7 @@ pieces of the above release artifacts:
 The above example allows for vendors to release their own bindings for
 the APIs as well. For example:
 
+* OPI AMD/Pensando
 * OPI Intel
 * OPI Marvell
 * OPI NVIDIA
