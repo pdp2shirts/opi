@@ -6,6 +6,11 @@ relates to the form the project takes, meaning this document is the result of a
 [mailing list discussion](https://lists.opiproject.org/g/tsc/message/30)
 around the OPI release process.
 
+## Release Cadence
+
+The OPI Project will strive to release code on a cadence of once every 6
+months.
+
 ## Concrete OPI Release Approach
 
 OPI will be releasing a set of artifacts, including a reference architecture
@@ -26,7 +31,7 @@ The details of what this will look like are as follows:
     * XDP program for the Security Firewall programs
   * gRPC client code to work with the server code
   * CLI based on the gRPC client code
-* An integration platform
+* An integration and development platform
   * A containerized version of a DPU or IPU device
 * A test suite and test plan
   * A test plan containing a list of tests for the covered OPI APIs
@@ -49,6 +54,8 @@ pieces of the above release artifacts:
 ### Working Group Specific Release Items
 
 * [Storage](https://github.com/opiproject/opi-api/tree/main/storage#deliverables)
+* [SZTP agent/client](https://github.com/opiproject/sztp/releases)
+* [GoOPICsi library](https://github.com/opiproject/goopicsi/releases)
 
 The above example allows for vendors to release their own bindings for
 the APIs as well. For example:
