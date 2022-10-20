@@ -1,63 +1,37 @@
 # OPI Release Approach
 
-OPI will eventually release some artifacts around the work being done in the
+OPI will release some artifacts around the work being done in the
 project. This document details *how* the artifacts are released, and how it
 relates to the form the project takes, meaning this document is the result of a
 [mailing list discussion](https://lists.opiproject.org/g/tsc/message/30)
 around the OPI release process.
 
-Specifically, the following three approaches were considered as becoming the
-OPI Release Process:
+## Concrete OPI Release Approach
 
-1. Standards documents & Protobuf Models Specifications only
-
-    * Need to verify models (even if this is manual effort)
-    * Even if this is using companies' private labs and private DPUs and IPUs
-    * Similar to CSI, FMDS, T11, T10, etc.
-
-2. Protobuf Specs + Reference releases
-
-    * POC/Reference
-        * Examples:  OPI-Nvidia bridge on BlueField and OPI-Intel bridge on MEV
-          and OPI-Marvell bridge on Octeon
-    * Can be based on OPI-SPDK bridge I built
-    * Releases are un-versioned and just examples
-    * Tools and Clients Examples from some open-source projects: Mockup, CLI
-      Client
-    * Similar to Redfish
-
-3. Full Community Release
-
-    * Testing
-    * Issue tracking & support
-    * Release tracking
-    * Release cadence
-    * Release content
-    * CI/CD and testing
-    * Deploy/installation
-    * Similar to SONiC
-
-## Proposed Release Approach
-
-This document proposes OPI will start by releasing an API in the form of
-protobuf specs and a reference architecture. **The reference architecture is
-not meant to be used in production.** Note this chosen approach is option
-number 2 from the above list of choices.
+OPI will be releasing a set of artifacts, including a reference architecture
+and integration platform. **The reference architecture and integration platform
+are not meant to be used in production.**
 
 The details of what this will look like are as follows:
 
-* The protobuf files themselves.
+* The protobuf files themselves
   * Some language specific bindings for those files. For example, bindings for
-    C++, golang, python, and Rust.
+    C++, golang, python, and Rust
   * Documentation around the protobuf files
 * A reference implementation which implements the protobuf files
-  * gRPC server code which incorporates the protobuf files.
-  * Implementation specific examples of the APIs themselves.
+  * gRPC server code which incorporates the protobuf files
+  * Implementation specific examples of the APIs themselves
     * SPDK for the Storage APIs
     * strongSwan for Security IPsec APIs
     * XDP program for the Security Firewall programs
   * gRPC client code to work with the server code
   * CLI based on the gRPC client code
+* An integration platform
+  * A containerized version of a DPU or IPU device
+* A test suite and test plan
+  * A test plan containing a list of tests for the covered OPI APIs
+  * Integration tests which run not only on the integration platform above, but also
+    will be run on vendor DPU and IPU devices
 * Code related to provisioning and lifecycle:
   * OTEL integration poins
   * sZTP code, including a custom client
@@ -94,3 +68,18 @@ use their own GitHub organization for the repository, they are free to do
 that as well.
 
 We will version the releases using [semantic versioning](https://semver.org).
+
+### Testing and the Release Plan
+
+All of the OPI APIs will be tested using the
+[OPI PoC Integration](https://github.com/opiproject/opi-poc/tree/main/integration)
+platform for both developer testing as well as verification. Each time a new
+API is added, the API will need to be implemented in the integration test
+suite in the OPI PoC repository.
+
+OPI will also produce a test plan, including a set of concrete tests, which
+each vendor is recommended to run against their HW DPU or IPU devices
+running the OPI APIs. The vendors will then be encouraged to upload those
+test results to a webpage containing a table of all the vendor results.
+These tests will also run on each commit to relevant GitHub repositories
+using the integration test suite in the OPI PoC repository.
