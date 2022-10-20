@@ -60,7 +60,7 @@ The details of what this will look like are as follows:
   * CLI based on the gRPC client code
 * Code related to provisioning and lifecycle:
   * OTEL integration poins
-  * sZTP code which, including a custom client
+  * sZTP code, including a custom client
 * A Container Storage Interface (CSI) library, client and helpful
   utilities called [goopicso](https://github.com/opiproject/goopicsi)
 
