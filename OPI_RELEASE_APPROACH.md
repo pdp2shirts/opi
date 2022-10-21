@@ -38,7 +38,7 @@ The details of what this will look like are as follows:
   * Integration tests which run not only on the integration platform above, but also
     will be run on vendor DPU and IPU devices
 * Code related to provisioning and lifecycle:
-  * OTEL integration poins
+  * OTEL integration points
   * sZTP code, including a custom client
 * A Container Storage Interface (CSI) library, client and helpful
   utilities called [goopicso](https://github.com/opiproject/goopicsi)
