@@ -118,7 +118,7 @@ Effective June 21, 2022
 
 8. Trademarks
 
-   1. Any trademarks relating to the Directed Fund or the Technical Project, including without limitation any mark relating to any Conformance Program, must be transferred to and held by LF Projects, LLC or the Linux Foundation and available for use pursuant to LF Projects, LLC’s trademark usage policy, available at www.lfprojects.org/trademarks/.
+   1. Any trademarks relating to the Directed Fund or the Technical Project, including without limitation any mark relating to any Conformance Program, must be transferred to and held by LF Projects, LLC or the Linux Foundation and available for use pursuant to LF Projects, LLC’s trademark usage policy, available at <www.lfprojects.org/trademarks/>.
 
 9. Antitrust Guidelines
 
