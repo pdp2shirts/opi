@@ -23,7 +23,7 @@ You can read the current [TSC Charter](Charters/Open_Programmable_Infrastructure
 
 OPI uses the term **DPU/IPU** to represent the entire class of DPU/IPU-like
 devices, and can refer to either the system containing a DPU/IPU-like device
-or to the device itself. In cases where brevity is needed in the codebase, 
+or to the device itself. In cases where brevity is needed in the codebase,
 OPI developers can use the term xPU to abbreviate DPU/IPU-like device.
 
 For more details, see the full [page](GOALS.md).
