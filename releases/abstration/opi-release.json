@@ -1,0 +1,774 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/opiproject/opi/releases/opi-release-schema.json",
+  "release": {
+    "version": "v0.1.0",
+    "date": "2026-03-07",
+    "description": "OPI Project \"Abstraction\" Release (v0.1.0) \u2014 the first coordinated OPI release manifest. Lists each participating repository with its pinned tag/commit, the OPI APIs it implements, the OPI blueprints it belongs to, and other metadata useful for integration and verification.",
+    "repositories": [
+      {
+        "name": "opi-api",
+        "github_url": "https://github.com/opiproject/opi-api",
+        "description": "Open Programmable Infrastructure API and Behavioral Model \u2014 protobuf/gRPC definitions for all OPI services, published to Buf Schema Registry (BSR)",
+        "tag": "",
+        "commit": "",
+        "language": "Protobuf / Python",
+        "type": "api-definitions",
+        "opi_apis_implemented": [
+          "opi_api.storage.v1",
+          "opi_api.network.evpn_gw.v1alpha1",
+          "opi_api.security.v1",
+          "opi_api.inventory.v1"
+        ],
+        "container_image": "",
+        "notes": "Source of truth for all OPI protobuf definitions. Every bridge and client library depends on this repo.",
+        "blueprints": [
+          {
+            "name": "Kubernetes Network Function Offload",
+            "status": "official",
+            "partners": [
+              "Intel",
+              "Marvell",
+              "Red Hat",
+              "F5 / NGINX"
+            ],
+            "hardware": [
+              "Intel IPU E2100",
+              "Marvell OCTEON DPU"
+            ],
+            "software": [
+              "Red Hat OpenShift",
+              "F5 NGINX"
+            ],
+            "description": "End-to-end Blueprint demonstrating Kubernetes-native network function offload to DPU/IPU hardware using OPI APIs, Red Hat OpenShift as the orchestration layer, and F5 NGINX as the application delivery controller.",
+            "blueprint_url": ""
+          }
+        ],
+        "keywords": [
+          "Storage",
+          "Networking",
+          "Security",
+          "Inventory"
+        ]
+      },
+      {
+        "name": "opi-poc",
+        "github_url": "https://github.com/opiproject/opi-poc",
+        "description": "Developer Platform and Proof of Concept \u2014 integration test suite, reference Docker Compose stacks, and CI PoCs covering all OPI working group areas",
+        "tag": "",
+        "commit": "",
+        "language": "Shell / Docker Compose",
+        "type": "integration-testing",
+        "opi_apis_implemented": [],
+        "container_image": "",
+        "notes": "Every new OPI API must be covered by an integration test added here. Used as the primary CI PoC validation environment.",
+        "blueprints": [
+          {
+            "name": "Kubernetes Network Function Offload",
+            "status": "official",
+            "partners": [
+              "Intel",
+              "Marvell",
+              "Red Hat",
+              "F5 / NGINX"
+            ],
+            "hardware": [
+              "Intel IPU E2100",
+              "Marvell OCTEON DPU"
+            ],
+            "software": [
+              "Red Hat OpenShift",
+              "F5 NGINX"
+            ],
+            "description": "End-to-end Blueprint demonstrating Kubernetes-native network function offload to DPU/IPU hardware using OPI APIs, Red Hat OpenShift as the orchestration layer, and F5 NGINX as the application delivery controller.",
+            "blueprint_url": ""
+          }
+        ],
+        "keywords": [
+          "Storage",
+          "Networking",
+          "Security",
+          "Inventory",
+          "Platform Management",
+          "Provisioning & Lifecycle"
+        ]
+      },
+      {
+        "name": "opi-smbios-bridge",
+        "github_url": "https://github.com/opiproject/opi-smbios-bridge",
+        "description": "OPI gRPC to SMBIOS bridge \u2014 exposes DPU/IPU hardware inventory via OPI Inventory gRPC APIs using dmidecode and the ghw Go library",
+        "tag": "v0.1.2",
+        "commit": "85e800cf8cfaf958368974533eb5cacf7180a276",
+        "language": "Go",
+        "type": "bridge",
+        "opi_apis_implemented": [
+          "opi_api.inventory.v1.InventorySvc"
+        ],
+        "container_image": "ghcr.io/opiproject/opi-smbios-bridge:main",
+        "notes": "Reference implementation of the OPI Inventory API. Uses dmidecode and ghw to read SMBIOS data from the DPU/IPU.",
+        "blueprints": [],
+        "keywords": [
+          "Inventory",
+          "Platform Management"
+        ]
+      },
+      {
+        "name": "opi-mangoboost-bridge",
+        "github_url": "https://github.com/opiproject/opi-mangoboost-bridge",
+        "description": "OPI gRPC to MangoBoost DPU bridge \u2014 NVMe/TCP initiator and target hardware offload via MangoBoost SDK (vendor implementation)",
+        "tag": "",
+        "commit": "",
+        "language": "Go",
+        "type": "vendor-bridge",
+        "vendor": "MangoBoost",
+        "opi_apis_implemented": [
+          "opi_api.storage.v1.FrontendNvmeService",
+          "opi_api.storage.v1.NvmeRemoteControllerService"
+        ],
+        "container_image": "ghcr.io/opiproject/opi-mangoboost-bridge:main",
+        "notes": "Targets MangoBoost DPUs with focus on NVMe/TCP hardware offload.",
+        "blueprints": [],
+        "keywords": [
+          "Storage"
+        ]
+      },
+      {
+        "name": "spdk",
+        "github_url": "https://github.com/opiproject/spdk",
+        "description": "OPI-maintained Dockerfile and CI wrapper for upstream SPDK (Storage Performance Development Kit)",
+        "tag": "v24.01",
+        "commit": "0b102908e908330e8f033a2691bc01de83b8e8d9",
+        "language": "Dockerfile",
+        "type": "container-packaging",
+        "opi_apis_implemented": [],
+        "container_image": "ghcr.io/opiproject/spdk:main",
+        "notes": "Reproducible SPDK container image used as the backend for opi-spdk-bridge and opi-poc integration tests.",
+        "blueprints": [],
+        "keywords": [
+          "Storage"
+        ]
+      },
+      {
+        "name": "opi-spdk-bridge",
+        "github_url": "https://github.com/opiproject/opi-spdk-bridge",
+        "description": "OPI Storage gRPC to SPDK JSON-RPC bridge \u2014 reference implementation of all OPI storage services backed by SPDK",
+        "tag": "v0.1.1",
+        "commit": "88edfc9eb5de0c3e011a543098976d753820792b",
+        "language": "Go",
+        "type": "bridge",
+        "opi_apis_implemented": [
+          "opi_api.storage.v1.FrontendNvmeService",
+          "opi_api.storage.v1.FrontendVirtioBlkService",
+          "opi_api.storage.v1.FrontendVirtioScsiService",
+          "opi_api.storage.v1.MiddleendEncryptionService",
+          "opi_api.storage.v1.MiddleendQosVolumeService",
+          "opi_api.storage.v1.NvmeRemoteControllerService",
+          "opi_api.storage.v1.AioVolumeService",
+          "opi_api.storage.v1.NullVolumeService"
+        ],
+        "container_image": "ghcr.io/opiproject/opi-spdk-bridge:main",
+        "notes": "Canonical storage reference bridge. Translates OPI gRPC to SPDK JSON-RPC. Released v0.1.1 in February 2025.",
+        "blueprints": [],
+        "keywords": [
+          "Storage"
+        ]
+      },
+      {
+        "name": "opi-xsight-bridge",
+        "github_url": "https://github.com/opiproject/opi-xsight-bridge",
+        "description": "OPI gRPC to xSight DPU bridge (vendor implementation, work-in-progress)",
+        "tag": "",
+        "commit": "",
+        "language": "Go",
+        "type": "vendor-bridge",
+        "vendor": "xSight",
+        "opi_apis_implemented": [
+          "opi_api.storage.v1.FrontendNvmeService",
+          "opi_api.storage.v1.NvmeRemoteControllerService"
+        ],
+        "container_image": "ghcr.io/opiproject/opi-xsight-bridge:main",
+        "notes": "Vendor bridge for xSight DPUs. Marked as WIP in opi-api storage README.",
+        "blueprints": [],
+        "keywords": [
+          "Storage"
+        ]
+      },
+      {
+        "name": "opi-intel-bridge",
+        "github_url": "https://github.com/opiproject/opi-intel-bridge",
+        "description": "OPI gRPC to Intel IPU/MEV bridge (vendor implementation)",
+        "tag": "v0.2.0",
+        "commit": "83a34699bf6dd0e69787fe3217cbc1c29a561287",
+        "language": "Go",
+        "type": "vendor-bridge",
+        "vendor": "Intel",
+        "opi_apis_implemented": [
+          "opi_api.storage.v1.FrontendNvmeService",
+          "opi_api.storage.v1.AioVolumeService",
+          "opi_api.storage.v1.NvmeRemoteControllerService",
+          "opi_api.security.v1.IPsec",
+          "opi_api.inventory.v1.InventorySvc"
+        ],
+        "container_image": "ghcr.io/opiproject/opi-intel-bridge:main",
+        "notes": "Targets Intel MEV (Mount Evans) IPU devices.",
+        "blueprints": [
+          {
+            "name": "Kubernetes Network Function Offload",
+            "status": "official",
+            "partners": [
+              "Intel",
+              "Marvell",
+              "Red Hat",
+              "F5 / NGINX"
+            ],
+            "hardware": [
+              "Intel IPU E2100",
+              "Marvell OCTEON DPU"
+            ],
+            "software": [
+              "Red Hat OpenShift",
+              "F5 NGINX"
+            ],
+            "description": "End-to-end Blueprint demonstrating Kubernetes-native network function offload to DPU/IPU hardware using OPI APIs, Red Hat OpenShift as the orchestration layer, and F5 NGINX as the application delivery controller.",
+            "blueprint_url": ""
+          }
+        ],
+        "keywords": [
+          "Storage",
+          "Security",
+          "Inventory"
+        ]
+      },
+      {
+        "name": "opi-evpn-bridge",
+        "github_url": "https://github.com/opiproject/opi-evpn-bridge",
+        "description": "OPI gRPC to EVPN Gateway FRR bridge \u2014 implements OPI network APIs using FRRouting (FRR) and vtysh",
+        "tag": "v0.2.0",
+        "commit": "5440fb9f85ed80d74658412a0cf3ff352b8d29dd",
+        "language": "Go",
+        "type": "bridge",
+        "opi_apis_implemented": [
+          "opi_api.network.evpn_gw.v1alpha1.VrfService",
+          "opi_api.network.evpn_gw.v1alpha1.LogicalBridgeService",
+          "opi_api.network.evpn_gw.v1alpha1.BridgePortService",
+          "opi_api.network.evpn_gw.v1alpha1.SviService"
+        ],
+        "container_image": "ghcr.io/opiproject/opi-evpn-bridge:main",
+        "notes": "Released v0.2.0 in June 2025, adding pagination, TLS options, Redis integration, and richer tests.",
+        "blueprints": [
+          {
+            "name": "Kubernetes Network Function Offload",
+            "status": "official",
+            "partners": [
+              "Intel",
+              "Marvell",
+              "Red Hat",
+              "F5 / NGINX"
+            ],
+            "hardware": [
+              "Intel IPU E2100",
+              "Marvell OCTEON DPU"
+            ],
+            "software": [
+              "Red Hat OpenShift",
+              "F5 NGINX"
+            ],
+            "description": "End-to-end Blueprint demonstrating Kubernetes-native network function offload to DPU/IPU hardware using OPI APIs, Red Hat OpenShift as the orchestration layer, and F5 NGINX as the application delivery controller.",
+            "blueprint_url": ""
+          }
+        ],
+        "keywords": [
+          "Networking"
+        ]
+      },
+      {
+        "name": "sztp",
+        "github_url": "https://github.com/opiproject/sztp",
+        "description": "Secure Zero Touch Provisioning (sZTP) \u2014 Go agent, bootstrap server client (wn-sztpd-1), and simulator implementing RFC 8572",
+        "tag": "v0.2.0",
+        "commit": "8ae1e7d5aa79d2d07cfad0c035e66fbfcb16ce10",
+        "language": "Go",
+        "type": "provisioning",
+        "opi_apis_implemented": [
+          "ietf-sztp-bootstrap-server (RFC 8572 RESTCONF)"
+        ],
+        "container_image": "ghcr.io/opiproject/sztp:main",
+        "notes": "Implements RFC 8572 Secure ZTP. Agent connects to bootstrap server via DHCP option 143 redirect, fetches and applies onboarding information.",
+        "blueprints": [],
+        "keywords": [
+          "Platform Management",
+          "Provisioning & Lifecycle"
+        ]
+      },
+      {
+        "name": "godpu",
+        "github_url": "https://github.com/opiproject/godpu",
+        "description": "Go CLI and library for communicating with DPUs and IPUs via all OPI gRPC APIs \u2014 the standard integration test client across all bridges",
+        "tag": "v0.2.0",
+        "commit": "eb709487adb3b92d5229b89c33e6a7070acabf31",
+        "language": "Go",
+        "type": "client-tooling",
+        "opi_apis_implemented": [],
+        "container_image": "ghcr.io/opiproject/godpu:main",
+        "notes": "Supports storage, evpn, ipsec, and inventory sub-commands. Used in CI and referenced from every bridge README.",
+        "blueprints": [
+          {
+            "name": "Kubernetes Network Function Offload",
+            "status": "official",
+            "partners": [
+              "Intel",
+              "Marvell",
+              "Red Hat",
+              "F5 / NGINX"
+            ],
+            "hardware": [
+              "Intel IPU E2100",
+              "Marvell OCTEON DPU"
+            ],
+            "software": [
+              "Red Hat OpenShift",
+              "F5 NGINX"
+            ],
+            "description": "End-to-end Blueprint demonstrating Kubernetes-native network function offload to DPU/IPU hardware using OPI APIs, Red Hat OpenShift as the orchestration layer, and F5 NGINX as the application delivery controller.",
+            "blueprint_url": ""
+          }
+        ],
+        "keywords": [
+          "Storage",
+          "Networking",
+          "Security",
+          "Inventory"
+        ]
+      },
+      {
+        "name": "opi-strongswan-bridge",
+        "github_url": "https://github.com/opiproject/opi-strongswan-bridge",
+        "description": "OPI IPsec gRPC to strongSwan vici API bridge \u2014 bridges OPI Security API to the strongSwan IKE daemon",
+        "tag": "v0.1.1",
+        "commit": "98602d8c52671b3dd95a81490634ab0dc3d5806b",
+        "language": "Go",
+        "type": "bridge",
+        "opi_apis_implemented": [
+          "opi_api.security.v1.IPsec"
+        ],
+        "container_image": "ghcr.io/opiproject/opi-strongswan-bridge:main",
+        "notes": "Works in tandem with sessionOffload APIs to provide full IPsec experience: IKE session creation via strongSwan vici, ESP session offload via sessionOffload.",
+        "blueprints": [],
+        "keywords": [
+          "Security"
+        ]
+      },
+      {
+        "name": "otel",
+        "github_url": "https://github.com/opiproject/otel",
+        "description": "OPI Monitoring and Telemetry via OpenTelemetry (OTEL) \u2014 PoC for collecting DPU/IPU metrics (CPU, memory, storage I/O, network, Redfish thermal) and traces via the OTEL collector",
+        "tag": "",
+        "commit": "",
+        "language": "Go / Shell",
+        "type": "observability",
+        "opi_apis_implemented": [
+          "OpenTelemetry Collector (OTEL) metrics and tracing pipeline"
+        ],
+        "container_image": "ghcr.io/opiproject/otel:main",
+        "notes": "Collects DPU metrics including mem_free, cpu_usage, dpu_num_blocks, net_bytes_recv, redfish_thermal_fans_reading_rpm. Streams traces to Zipkin/Jaeger. Mandates a common set of metrics across NVIDIA, Intel, and Marvell DPUs.",
+        "blueprints": [],
+        "keywords": [
+          "Platform Management",
+          "Inventory"
+        ]
+      },
+      {
+        "name": "pydpu",
+        "github_url": "https://github.com/opiproject/pydpu",
+        "description": "Python client library and CLI for communicating with DPUs and IPUs via OPI gRPC APIs \u2014 Python equivalent of godpu",
+        "tag": "v0.2.1",
+        "commit": "3f4b838ac93f4336056931b8f2df8fb8321f659d",
+        "language": "Python",
+        "type": "client-tooling",
+        "opi_apis_implemented": [],
+        "container_image": "ghcr.io/opiproject/pydpu:main",
+        "notes": "Python gRPC client for OPI APIs. Referenced alongside godpu in opi-api storage README as an official client.",
+        "blueprints": [
+          {
+            "name": "Kubernetes Network Function Offload",
+            "status": "official",
+            "partners": [
+              "Intel",
+              "Marvell",
+              "Red Hat",
+              "F5 / NGINX"
+            ],
+            "hardware": [
+              "Intel IPU E2100",
+              "Marvell OCTEON DPU"
+            ],
+            "software": [
+              "Red Hat OpenShift",
+              "F5 NGINX"
+            ],
+            "description": "End-to-end Blueprint demonstrating Kubernetes-native network function offload to DPU/IPU hardware using OPI APIs, Red Hat OpenShift as the orchestration layer, and F5 NGINX as the application delivery controller.",
+            "blueprint_url": ""
+          }
+        ],
+        "keywords": [
+          "Storage",
+          "Networking",
+          "Security",
+          "Inventory"
+        ]
+      },
+      {
+        "name": "ansible-opi-dpu",
+        "github_url": "https://github.com/opiproject/ansible-opi-dpu",
+        "description": "Ansible roles and playbooks for automating DPU/IPU provisioning, configuration, and lifecycle management in OPI lab environments",
+        "tag": "v1.0.0",
+        "commit": "42d5399b59b1b9dfa0485510850c8b19fc6469d9",
+        "language": "Ansible / YAML",
+        "type": "automation",
+        "opi_apis_implemented": [],
+        "container_image": "",
+        "notes": "Part of the OPI Lab automation tooling alongside Grafana dashboards and sZTP workflows. Used for DPU bring-up and configuration automation.",
+        "blueprints": [],
+        "keywords": [
+          "Platform Management",
+          "Provisioning & Lifecycle"
+        ]
+      },
+      {
+        "name": "opi-nvidia-bridge",
+        "github_url": "https://github.com/opiproject/opi-nvidia-bridge",
+        "description": "OPI gRPC to NVIDIA BlueField DPU bridge via SNAP and DOCA (vendor implementation)",
+        "tag": "v0.1.2",
+        "commit": "16632dfb215fb39d7409b63813a43c23052a0904",
+        "language": "Go",
+        "type": "vendor-bridge",
+        "vendor": "NVIDIA",
+        "opi_apis_implemented": [
+          "opi_api.storage.v1.FrontendNvmeService",
+          "opi_api.storage.v1.FrontendVirtioBlkService",
+          "opi_api.storage.v1.FrontendVirtioScsiService",
+          "opi_api.storage.v1.MiddleendService",
+          "opi_api.storage.v1.NvmeRemoteControllerService",
+          "opi_api.storage.v1.AioVolumeService",
+          "opi_api.storage.v1.NullVolumeService",
+          "opi_api.security.v1.IPsec",
+          "opi_api.inventory.v1.InventorySvc"
+        ],
+        "container_image": "ghcr.io/opiproject/opi-nvidia-bridge:main",
+        "notes": "Requires NVIDIA SNAP service and /var/tmp/spdk.sock. Communicates with BlueField DPU via DOCA SDK. Requires Redis and Jaeger before starting bridge.",
+        "blueprints": [],
+        "keywords": [
+          "Storage",
+          "Security",
+          "Inventory"
+        ]
+      },
+      {
+        "name": "opi-marvell-bridge",
+        "github_url": "https://github.com/opiproject/opi-marvell-bridge",
+        "description": "OPI gRPC to Marvell OCTEON DPU bridge (vendor implementation)",
+        "tag": "v0.1.2",
+        "commit": "a2338007b42d5bc281f90209d5fdaf927467209c",
+        "language": "Go",
+        "type": "vendor-bridge",
+        "vendor": "Marvell",
+        "opi_apis_implemented": [
+          "opi_api.storage.v1.FrontendNvmeService",
+          "opi_api.storage.v1.FrontendVirtioBlkService",
+          "opi_api.storage.v1.FrontendVirtioScsiService",
+          "opi_api.storage.v1.NvmeRemoteControllerService",
+          "opi_api.security.v1.IPsec",
+          "opi_api.inventory.v1.InventorySvc"
+        ],
+        "container_image": "ghcr.io/opiproject/opi-marvell-bridge:main",
+        "notes": "Targets Marvell OCTEON DPU family.",
+        "blueprints": [
+          {
+            "name": "Kubernetes Network Function Offload",
+            "status": "official",
+            "partners": [
+              "Intel",
+              "Marvell",
+              "Red Hat",
+              "F5 / NGINX"
+            ],
+            "hardware": [
+              "Intel IPU E2100",
+              "Marvell OCTEON DPU"
+            ],
+            "software": [
+              "Red Hat OpenShift",
+              "F5 NGINX"
+            ],
+            "description": "End-to-end Blueprint demonstrating Kubernetes-native network function offload to DPU/IPU hardware using OPI APIs, Red Hat OpenShift as the orchestration layer, and F5 NGINX as the application delivery controller.",
+            "blueprint_url": ""
+          }
+        ],
+        "keywords": [
+          "Storage",
+          "Security",
+          "Inventory"
+        ]
+      },
+      {
+        "name": "opi-gateway-evpn-cni",
+        "github_url": "https://github.com/opiproject/opi-gateway-evpn-cni",
+        "description": "OPI Kubernetes CNI plugin \u2014 bridges Multus/SR-IOV VFs on DPU/IPU to the OPI EVPN gateway via gRPC BridgePort calls",
+        "tag": "",
+        "commit": "",
+        "language": "Go",
+        "type": "cni-plugin",
+        "opi_apis_implemented": [
+          "opi_api.network.evpn_gw.v1alpha1.BridgePortService"
+        ],
+        "container_image": "ghcr.io/opiproject/opi-gateway-evpn-cni:main",
+        "notes": "Called by Multus when a pod is scheduled. Creates BridgePorts in opi-evpn-bridge for xPU VFs. Supports kernel and userspace (DPDK/VFIO) drivers.",
+        "blueprints": [
+          {
+            "name": "Kubernetes Network Function Offload",
+            "status": "official",
+            "partners": [
+              "Intel",
+              "Marvell",
+              "Red Hat",
+              "F5 / NGINX"
+            ],
+            "hardware": [
+              "Intel IPU E2100",
+              "Marvell OCTEON DPU"
+            ],
+            "software": [
+              "Red Hat OpenShift",
+              "F5 NGINX"
+            ],
+            "description": "End-to-end Blueprint demonstrating Kubernetes-native network function offload to DPU/IPU hardware using OPI APIs, Red Hat OpenShift as the orchestration layer, and F5 NGINX as the application delivery controller.",
+            "blueprint_url": ""
+          }
+        ],
+        "keywords": [
+          "Networking"
+        ]
+      },
+      {
+        "name": "gospdk",
+        "github_url": "https://github.com/opiproject/gospdk",
+        "description": "Go library implementing the SPDK JSON-RPC protocol \u2014 shared client library used by opi-spdk-bridge and other bridges that communicate with SPDK",
+        "tag": "",
+        "commit": "",
+        "language": "Go",
+        "type": "shared-library",
+        "opi_apis_implemented": [
+          "SPDK JSON-RPC (https://spdk.io/doc/jsonrpc.html)"
+        ],
+        "container_image": "",
+        "notes": "Provides JSONRPC interface with unix socket and TCP transport. Covers NVMf, LVol, BDev, Crypto, and Accel SPDK subsystems. Used as a dependency by opi-spdk-bridge.",
+        "blueprints": [],
+        "keywords": [
+          "Storage"
+        ]
+      },
+      {
+        "name": "opi-prov-life",
+        "github_url": "https://github.com/opiproject/opi-prov-life",
+        "description": "Provisioning, Lifecycle and Platform Management working group hub \u2014 specs, architecture docs, and PoCs for sZTP, PXE, Redfish, and lifecycle workflows",
+        "tag": "",
+        "commit": "",
+        "language": "Markdown / Shell",
+        "type": "working-group-docs",
+        "opi_apis_implemented": [],
+        "container_image": "",
+        "notes": "Working group documentation hub. Covers sZTP (RFC 8572), Redfish, PXE, and DPU/IPU lifecycle management patterns and blueprints.",
+        "blueprints": [],
+        "keywords": [
+          "Platform Management",
+          "Provisioning & Lifecycle"
+        ]
+      },
+      {
+        "name": "opi-cni",
+        "github_url": "https://github.com/opiproject/opi-cni",
+        "description": "OPI CNI plugin \u2014 generic Kubernetes CNI integration for OPI-managed DPU/IPU network functions",
+        "tag": "",
+        "commit": "",
+        "language": "Go",
+        "type": "cni-plugin",
+        "opi_apis_implemented": [
+          "opi_api.network.evpn_gw.v1alpha1"
+        ],
+        "container_image": "ghcr.io/opiproject/opi-cni:main",
+        "notes": "Companion to opi-gateway-evpn-cni. Provides broader CNI integration for OPI-managed DPU/IPU network functions in Kubernetes environments.",
+        "blueprints": [
+          {
+            "name": "Kubernetes Network Function Offload",
+            "status": "official",
+            "partners": [
+              "Intel",
+              "Marvell",
+              "Red Hat",
+              "F5 / NGINX"
+            ],
+            "hardware": [
+              "Intel IPU E2100",
+              "Marvell OCTEON DPU"
+            ],
+            "software": [
+              "Red Hat OpenShift",
+              "F5 NGINX"
+            ],
+            "description": "End-to-end Blueprint demonstrating Kubernetes-native network function offload to DPU/IPU hardware using OPI APIs, Red Hat OpenShift as the orchestration layer, and F5 NGINX as the application delivery controller.",
+            "blueprint_url": ""
+          }
+        ],
+        "keywords": [
+          "Networking"
+        ]
+      },
+      {
+        "name": "sztpd",
+        "github_url": "https://github.com/opiproject/sztpd",
+        "description": "OPI-maintained container packaging for sztpd (wn-sztpd-1) \u2014 the RFC 8572 SZTP bootstrap server daemon used in OPI provisioning workflows",
+        "tag": "0.0.15",
+        "commit": "40c371ea48ecf257fdf1a6080b8166a871158403",
+        "language": "Dockerfile / Shell",
+        "type": "container-packaging",
+        "opi_apis_implemented": [
+          "ietf-sztp-bootstrap-server (RFC 8572 RESTCONF)"
+        ],
+        "container_image": "ghcr.io/opiproject/sztpd:main",
+        "notes": "Packages the wn-sztpd-1 bootstrap server used by the sztp agent repo. Provides the server side of the RFC 8572 sZTP flow.",
+        "blueprints": [],
+        "keywords": [
+          "Provisioning & Lifecycle",
+          "Platform Management"
+        ]
+      },
+      {
+        "name": "opi-amd-bridge",
+        "github_url": "https://github.com/opiproject/opi-amd-bridge",
+        "description": "OPI gRPC to AMD Pensando DPU bridge (vendor implementation)",
+        "tag": "",
+        "commit": "",
+        "language": "Go",
+        "type": "vendor-bridge",
+        "vendor": "AMD / Pensando",
+        "opi_apis_implemented": [
+          "opi_api.storage.v1.FrontendNvmeService",
+          "opi_api.storage.v1.NvmeRemoteControllerService",
+          "opi_api.security.v1.IPsec",
+          "opi_api.inventory.v1.InventorySvc"
+        ],
+        "container_image": "ghcr.io/opiproject/opi-amd-bridge:main",
+        "notes": "Vendor bridge for AMD Pensando (formerly Pensando Systems) DPU/DSC devices.",
+        "blueprints": [],
+        "keywords": [
+          "Storage",
+          "Security",
+          "Inventory"
+        ]
+      },
+      {
+        "name": "smbios-validation-tool",
+        "github_url": "https://github.com/opiproject/smbios-validation-tool",
+        "description": "Validation tool for checking SMBIOS data correctness and compliance on DPU/IPU hardware \u2014 used to verify opi-smbios-bridge output",
+        "tag": "",
+        "commit": "",
+        "language": "Python / Go",
+        "type": "testing-tool",
+        "opi_apis_implemented": [],
+        "container_image": "",
+        "notes": "Validates SMBIOS tables reported by DPU/IPU hardware. Complements opi-smbios-bridge by verifying the underlying SMBIOS data quality.",
+        "blueprints": [],
+        "keywords": [
+          "Inventory",
+          "Platform Management"
+        ]
+      },
+      {
+        "name": "sessionOffload",
+        "github_url": "https://github.com/opiproject/sessionOffload",
+        "description": "OPI Session Offload API \u2014 gRPC API definitions and reference implementation for offloading network sessions (TCP/UDP/IPsec ESP) to DPU/IPU hardware",
+        "tag": "v1",
+        "commit": "8708e583e2a376a9ba0229d21ca26d48c182a240",
+        "language": "Go / Protobuf",
+        "type": "api-definitions",
+        "opi_apis_implemented": [
+          "opi_api.network.session_offload.v1alpha1"
+        ],
+        "container_image": "",
+        "notes": "Used in tandem with opi-strongswan-bridge: strongSwan handles IKE session negotiation, sessionOffload handles ESP datapath offload to DPU hardware accelerators.",
+        "blueprints": [
+          {
+            "name": "Kubernetes Network Function Offload",
+            "status": "official",
+            "partners": [
+              "Intel",
+              "Marvell",
+              "Red Hat",
+              "F5 / NGINX"
+            ],
+            "hardware": [
+              "Intel IPU E2100",
+              "Marvell OCTEON DPU"
+            ],
+            "software": [
+              "Red Hat OpenShift",
+              "F5 NGINX"
+            ],
+            "description": "End-to-end Blueprint demonstrating Kubernetes-native network function offload to DPU/IPU hardware using OPI APIs, Red Hat OpenShift as the orchestration layer, and F5 NGINX as the application delivery controller.",
+            "blueprint_url": ""
+          }
+        ],
+        "keywords": [
+          "Networking",
+          "Security"
+        ]
+      },
+      {
+        "name": "spdk-csi",
+        "github_url": "https://github.com/opiproject/spdk-csi",
+        "description": "OPI SPDK CSI driver \u2014 Kubernetes Container Storage Interface (CSI) driver that provisions persistent volumes backed by SPDK NVMe-oF targets on DPU/IPU",
+        "tag": "",
+        "commit": "",
+        "language": "Go",
+        "type": "csi-driver",
+        "opi_apis_implemented": [
+          "Kubernetes CSI spec v1.x",
+          "SPDK JSON-RPC NVMe-oF target"
+        ],
+        "container_image": "ghcr.io/opiproject/spdk-csi:main",
+        "notes": "Allows Kubernetes workloads to consume NVMe-oF storage offloaded to DPU/IPU via SPDK. Bridges Kubernetes storage orchestration with OPI-managed DPU storage services.",
+        "blueprints": [],
+        "keywords": [
+          "Storage"
+        ]
+      }
+    ],
+    "codename": "Abstraction"
+  },
+  "_metadata": {
+    "schema_version": "1.0.0",
+    "generated_by": "OPI Release Working Group",
+    "total_repos": 26,
+    "excluded_repos": [
+      "dpu-operator",
+      "opi",
+      "lab-private",
+      "actions",
+      "lab",
+      "artwork",
+      "opiproject.org"
+    ],
+    "field_guide": {
+      "tag": "Semantic version tag for this release, e.g. v0.1.0. Set per-repo at release time.",
+      "commit": "Full 40-character Git commit SHA corresponding to the tag. Set per-repo at release time.",
+      "type": "One of: api-definitions | bridge | vendor-bridge | cni-plugin | csi-driver | client-tooling | shared-library | integration-testing | container-packaging | provisioning | working-group-docs | observability | automation | testing-tool",
+      "opi_apis_implemented": "Fully-qualified gRPC service names from opi-api protobuf definitions, or standard identifiers (e.g. RFC number) for non-gRPC APIs.",
+      "vendor": "Present only on vendor-bridge repos. Identifies the hardware vendor.",
+      "container_image": "Primary GHCR or Docker Hub image for this repo, if published.",
+      "notes": "Human-readable context, constraints, dependencies, or integration notes.",
+      "capability_areas": "Array of OPI functional capability areas this repo contributes to. Each entry has: area (the OPI capability domain: Storage Offload | Secure Networking | DPU Inventory & Telemetry | DPU Provisioning & Lifecycle), role (one of: api | reference-implementation | vendor-implementation | client | infrastructure | automation | specification | integration-testing | testing-tool), description (how this repo contributes technically to that capability area). NOTE: capability_areas describes what a repo CAN do technically. It is distinct from blueprints, which are official validated production deployments.",
+      "blueprints": "Array of official OPI Blueprints this repo has been validated in. Per the OPI Blueprint Framework, a Blueprint is a fully documented, partner-attributed, production-grade deployment pattern with BOM, architecture diagram, deployment guide, IaC artifacts, and validated test results. Empty array means the repo has not yet been included in an official Blueprint. Each entry has: name, status (official | draft | proposed), partners (list of contributing vendors/integrators), hardware, software, description, blueprint_url.",
+      "keywords": "Functional area tags describing what this repo does. Used for filtering and discovery. Values: Storage | Networking | Security | Inventory | Platform Management | Provisioning & Lifecycle. These are NOT OPI Blueprints \u2014 see the 'blueprints' array for blueprint participation."
+    }
+  }
+}
