@@ -4,14 +4,14 @@
   "release": {
     "version": "v0.1.0",
     "date": "2026-03-07",
-    "description": "OPI Project \"Abstraction\" Release (v0.1.0) \u2014 the first coordinated OPI release manifest. Lists each participating repository with its pinned tag/commit, the OPI APIs it implements, the OPI blueprints it belongs to, and other metadata useful for integration and verification.",
+    "description": "OPI Project \"Abstraction\" Release (v0.1.0) — the first coordinated OPI release manifest. Lists each participating repository with its pinned tag/commit, the OPI APIs it implements, the OPI blueprints it belongs to, and other metadata useful for integration and verification.",
     "repositories": [
       {
         "name": "opi-api",
         "github_url": "https://github.com/opiproject/opi-api",
-        "description": "Open Programmable Infrastructure API and Behavioral Model \u2014 protobuf/gRPC definitions for all OPI services, published to Buf Schema Registry (BSR)",
-        "tag": "",
-        "commit": "",
+        "description": "Open Programmable Infrastructure API and Behavioral Model — protobuf/gRPC definitions for all OPI services, published to Buf Schema Registry (BSR)",
+        "tag": "v1.0.0",
+        "commit": "0b58e48b3c91095621ffb1124b89094c6eac3ec7",
         "language": "Protobuf / Python",
         "type": "api-definitions",
         "opi_apis_implemented": [
@@ -54,9 +54,9 @@
       {
         "name": "opi-poc",
         "github_url": "https://github.com/opiproject/opi-poc",
-        "description": "Developer Platform and Proof of Concept \u2014 integration test suite, reference Docker Compose stacks, and CI PoCs covering all OPI working group areas",
-        "tag": "",
-        "commit": "",
+        "description": "Developer Platform and Proof of Concept — integration test suite, reference Docker Compose stacks, and CI PoCs covering all OPI working group areas",
+        "tag": "v1.0.0",
+        "commit": "3118ff80f39b5a364451ef2c7e3580abddcd02bf",
         "language": "Shell / Docker Compose",
         "type": "integration-testing",
         "opi_apis_implemented": [],
@@ -96,7 +96,7 @@
       {
         "name": "opi-smbios-bridge",
         "github_url": "https://github.com/opiproject/opi-smbios-bridge",
-        "description": "OPI gRPC to SMBIOS bridge \u2014 exposes DPU/IPU hardware inventory via OPI Inventory gRPC APIs using dmidecode and the ghw Go library",
+        "description": "OPI gRPC to SMBIOS bridge — exposes DPU/IPU hardware inventory via OPI Inventory gRPC APIs using dmidecode and the ghw Go library",
         "tag": "v0.1.2",
         "commit": "85e800cf8cfaf958368974533eb5cacf7180a276",
         "language": "Go",
@@ -115,9 +115,9 @@
       {
         "name": "opi-mangoboost-bridge",
         "github_url": "https://github.com/opiproject/opi-mangoboost-bridge",
-        "description": "OPI gRPC to MangoBoost DPU bridge \u2014 NVMe/TCP initiator and target hardware offload via MangoBoost SDK (vendor implementation)",
-        "tag": "",
-        "commit": "",
+        "description": "OPI gRPC to MangoBoost DPU bridge — NVMe/TCP initiator and target hardware offload via MangoBoost SDK (vendor implementation)",
+        "tag": "v1.0.0",
+        "commit": "c086acf5e0fa61cbb4c077b06da7b0f7643d5e6d",
         "language": "Go",
         "type": "vendor-bridge",
         "vendor": "MangoBoost",
@@ -151,7 +151,7 @@
       {
         "name": "opi-spdk-bridge",
         "github_url": "https://github.com/opiproject/opi-spdk-bridge",
-        "description": "OPI Storage gRPC to SPDK JSON-RPC bridge \u2014 reference implementation of all OPI storage services backed by SPDK",
+        "description": "OPI Storage gRPC to SPDK JSON-RPC bridge — reference implementation of all OPI storage services backed by SPDK",
         "tag": "v0.1.1",
         "commit": "88edfc9eb5de0c3e011a543098976d753820792b",
         "language": "Go",
@@ -168,26 +168,6 @@
         ],
         "container_image": "ghcr.io/opiproject/opi-spdk-bridge:main",
         "notes": "Canonical storage reference bridge. Translates OPI gRPC to SPDK JSON-RPC. Released v0.1.1 in February 2025.",
-        "blueprints": [],
-        "keywords": [
-          "Storage"
-        ]
-      },
-      {
-        "name": "opi-xsight-bridge",
-        "github_url": "https://github.com/opiproject/opi-xsight-bridge",
-        "description": "OPI gRPC to xSight DPU bridge (vendor implementation, work-in-progress)",
-        "tag": "",
-        "commit": "",
-        "language": "Go",
-        "type": "vendor-bridge",
-        "vendor": "xSight",
-        "opi_apis_implemented": [
-          "opi_api.storage.v1.FrontendNvmeService",
-          "opi_api.storage.v1.NvmeRemoteControllerService"
-        ],
-        "container_image": "ghcr.io/opiproject/opi-xsight-bridge:main",
-        "notes": "Vendor bridge for xSight DPUs. Marked as WIP in opi-api storage README.",
         "blueprints": [],
         "keywords": [
           "Storage"
@@ -242,7 +222,7 @@
       {
         "name": "opi-evpn-bridge",
         "github_url": "https://github.com/opiproject/opi-evpn-bridge",
-        "description": "OPI gRPC to EVPN Gateway FRR bridge \u2014 implements OPI network APIs using FRRouting (FRR) and vtysh",
+        "description": "OPI gRPC to EVPN Gateway FRR bridge — implements OPI network APIs using FRRouting (FRR) and vtysh",
         "tag": "v0.2.0",
         "commit": "5440fb9f85ed80d74658412a0cf3ff352b8d29dd",
         "language": "Go",
@@ -284,7 +264,7 @@
       {
         "name": "sztp",
         "github_url": "https://github.com/opiproject/sztp",
-        "description": "Secure Zero Touch Provisioning (sZTP) \u2014 Go agent, bootstrap server client (wn-sztpd-1), and simulator implementing RFC 8572",
+        "description": "Secure Zero Touch Provisioning (sZTP) — Go agent, bootstrap server client (wn-sztpd-1), and simulator implementing RFC 8572",
         "tag": "v0.2.0",
         "commit": "8ae1e7d5aa79d2d07cfad0c035e66fbfcb16ce10",
         "language": "Go",
@@ -303,7 +283,7 @@
       {
         "name": "godpu",
         "github_url": "https://github.com/opiproject/godpu",
-        "description": "Go CLI and library for communicating with DPUs and IPUs via all OPI gRPC APIs \u2014 the standard integration test client across all bridges",
+        "description": "Go CLI and library for communicating with DPUs and IPUs via all OPI gRPC APIs — the standard integration test client across all bridges",
         "tag": "v0.2.0",
         "commit": "eb709487adb3b92d5229b89c33e6a7070acabf31",
         "language": "Go",
@@ -343,7 +323,7 @@
       {
         "name": "opi-strongswan-bridge",
         "github_url": "https://github.com/opiproject/opi-strongswan-bridge",
-        "description": "OPI IPsec gRPC to strongSwan vici API bridge \u2014 bridges OPI Security API to the strongSwan IKE daemon",
+        "description": "OPI IPsec gRPC to strongSwan vici API bridge — bridges OPI Security API to the strongSwan IKE daemon",
         "tag": "v0.1.1",
         "commit": "98602d8c52671b3dd95a81490634ab0dc3d5806b",
         "language": "Go",
@@ -361,9 +341,9 @@
       {
         "name": "otel",
         "github_url": "https://github.com/opiproject/otel",
-        "description": "OPI Monitoring and Telemetry via OpenTelemetry (OTEL) \u2014 PoC for collecting DPU/IPU metrics (CPU, memory, storage I/O, network, Redfish thermal) and traces via the OTEL collector",
-        "tag": "",
-        "commit": "",
+        "description": "OPI Monitoring and Telemetry via OpenTelemetry (OTEL) — PoC for collecting DPU/IPU metrics (CPU, memory, storage I/O, network, Redfish thermal) and traces via the OTEL collector",
+        "tag": "v1.0.0",
+        "commit": "d7b81b0bdfcdea999819ad1e3a33b9dbfe8475b1",
         "language": "Go / Shell",
         "type": "observability",
         "opi_apis_implemented": [
@@ -380,7 +360,7 @@
       {
         "name": "pydpu",
         "github_url": "https://github.com/opiproject/pydpu",
-        "description": "Python client library and CLI for communicating with DPUs and IPUs via OPI gRPC APIs \u2014 Python equivalent of godpu",
+        "description": "Python client library and CLI for communicating with DPUs and IPUs via OPI gRPC APIs — Python equivalent of godpu",
         "tag": "v0.2.1",
         "commit": "3f4b838ac93f4336056931b8f2df8fb8321f659d",
         "language": "Python",
@@ -513,9 +493,9 @@
       {
         "name": "opi-gateway-evpn-cni",
         "github_url": "https://github.com/opiproject/opi-gateway-evpn-cni",
-        "description": "OPI Kubernetes CNI plugin \u2014 bridges Multus/SR-IOV VFs on DPU/IPU to the OPI EVPN gateway via gRPC BridgePort calls",
-        "tag": "",
-        "commit": "",
+        "description": "OPI Kubernetes CNI plugin — bridges Multus/SR-IOV VFs on DPU/IPU to the OPI EVPN gateway via gRPC BridgePort calls",
+        "tag": "v1.0.0",
+        "commit": "a2207f8230bec1495e7a044daf43e2649e2cc568",
         "language": "Go",
         "type": "cni-plugin",
         "opi_apis_implemented": [
@@ -552,9 +532,9 @@
       {
         "name": "gospdk",
         "github_url": "https://github.com/opiproject/gospdk",
-        "description": "Go library implementing the SPDK JSON-RPC protocol \u2014 shared client library used by opi-spdk-bridge and other bridges that communicate with SPDK",
-        "tag": "",
-        "commit": "",
+        "description": "Go library implementing the SPDK JSON-RPC protocol — shared client library used by opi-spdk-bridge and other bridges that communicate with SPDK",
+        "tag": "v1.0.0",
+        "commit": "98d71122a73b2e5eb0eb8b2a277a5c34bb997a6b",
         "language": "Go",
         "type": "shared-library",
         "opi_apis_implemented": [
@@ -570,9 +550,9 @@
       {
         "name": "opi-prov-life",
         "github_url": "https://github.com/opiproject/opi-prov-life",
-        "description": "Provisioning, Lifecycle and Platform Management working group hub \u2014 specs, architecture docs, and PoCs for sZTP, PXE, Redfish, and lifecycle workflows",
-        "tag": "",
-        "commit": "",
+        "description": "Provisioning, Lifecycle and Platform Management working group hub — specs, architecture docs, and PoCs for sZTP, PXE, Redfish, and lifecycle workflows",
+        "tag": "v1.0.0",
+        "commit": "c18ec9e1d6db357af18c0884e49b564ca5e07337",
         "language": "Markdown / Shell",
         "type": "working-group-docs",
         "opi_apis_implemented": [],
@@ -587,9 +567,9 @@
       {
         "name": "opi-cni",
         "github_url": "https://github.com/opiproject/opi-cni",
-        "description": "OPI CNI plugin \u2014 generic Kubernetes CNI integration for OPI-managed DPU/IPU network functions",
-        "tag": "",
-        "commit": "",
+        "description": "OPI CNI plugin — generic Kubernetes CNI integration for OPI-managed DPU/IPU network functions",
+        "tag": "v1.0.0",
+        "commit": "8751c724cc5fc11e2d50d9bbef7cf4bdf70a4c67",
         "language": "Go",
         "type": "cni-plugin",
         "opi_apis_implemented": [
@@ -626,7 +606,7 @@
       {
         "name": "sztpd",
         "github_url": "https://github.com/opiproject/sztpd",
-        "description": "OPI-maintained container packaging for sztpd (wn-sztpd-1) \u2014 the RFC 8572 SZTP bootstrap server daemon used in OPI provisioning workflows",
+        "description": "OPI-maintained container packaging for sztpd (wn-sztpd-1) — the RFC 8572 SZTP bootstrap server daemon used in OPI provisioning workflows",
         "tag": "0.0.15",
         "commit": "40c371ea48ecf257fdf1a6080b8166a871158403",
         "language": "Dockerfile / Shell",
@@ -643,50 +623,9 @@
         ]
       },
       {
-        "name": "opi-amd-bridge",
-        "github_url": "https://github.com/opiproject/opi-amd-bridge",
-        "description": "OPI gRPC to AMD Pensando DPU bridge (vendor implementation)",
-        "tag": "",
-        "commit": "",
-        "language": "Go",
-        "type": "vendor-bridge",
-        "vendor": "AMD / Pensando",
-        "opi_apis_implemented": [
-          "opi_api.storage.v1.FrontendNvmeService",
-          "opi_api.storage.v1.NvmeRemoteControllerService",
-          "opi_api.security.v1.IPsec",
-          "opi_api.inventory.v1.InventorySvc"
-        ],
-        "container_image": "ghcr.io/opiproject/opi-amd-bridge:main",
-        "notes": "Vendor bridge for AMD Pensando (formerly Pensando Systems) DPU/DSC devices.",
-        "blueprints": [],
-        "keywords": [
-          "Storage",
-          "Security",
-          "Inventory"
-        ]
-      },
-      {
-        "name": "smbios-validation-tool",
-        "github_url": "https://github.com/opiproject/smbios-validation-tool",
-        "description": "Validation tool for checking SMBIOS data correctness and compliance on DPU/IPU hardware \u2014 used to verify opi-smbios-bridge output",
-        "tag": "",
-        "commit": "",
-        "language": "Python / Go",
-        "type": "testing-tool",
-        "opi_apis_implemented": [],
-        "container_image": "",
-        "notes": "Validates SMBIOS tables reported by DPU/IPU hardware. Complements opi-smbios-bridge by verifying the underlying SMBIOS data quality.",
-        "blueprints": [],
-        "keywords": [
-          "Inventory",
-          "Platform Management"
-        ]
-      },
-      {
         "name": "sessionOffload",
         "github_url": "https://github.com/opiproject/sessionOffload",
-        "description": "OPI Session Offload API \u2014 gRPC API definitions and reference implementation for offloading network sessions (TCP/UDP/IPsec ESP) to DPU/IPU hardware",
+        "description": "OPI Session Offload API — gRPC API definitions and reference implementation for offloading network sessions (TCP/UDP/IPsec ESP) to DPU/IPU hardware",
         "tag": "v1",
         "commit": "8708e583e2a376a9ba0229d21ca26d48c182a240",
         "language": "Go / Protobuf",
@@ -722,25 +661,6 @@
           "Networking",
           "Security"
         ]
-      },
-      {
-        "name": "spdk-csi",
-        "github_url": "https://github.com/opiproject/spdk-csi",
-        "description": "OPI SPDK CSI driver \u2014 Kubernetes Container Storage Interface (CSI) driver that provisions persistent volumes backed by SPDK NVMe-oF targets on DPU/IPU",
-        "tag": "",
-        "commit": "",
-        "language": "Go",
-        "type": "csi-driver",
-        "opi_apis_implemented": [
-          "Kubernetes CSI spec v1.x",
-          "SPDK JSON-RPC NVMe-oF target"
-        ],
-        "container_image": "ghcr.io/opiproject/spdk-csi:main",
-        "notes": "Allows Kubernetes workloads to consume NVMe-oF storage offloaded to DPU/IPU via SPDK. Bridges Kubernetes storage orchestration with OPI-managed DPU storage services.",
-        "blueprints": [],
-        "keywords": [
-          "Storage"
-        ]
       }
     ],
     "codename": "Abstraction"
@@ -748,7 +668,7 @@
   "_metadata": {
     "schema_version": "1.0.0",
     "generated_by": "OPI Release Working Group",
-    "total_repos": 26,
+    "total_repos": 22,
     "excluded_repos": [
       "dpu-operator",
       "opi",
@@ -768,7 +688,7 @@
       "notes": "Human-readable context, constraints, dependencies, or integration notes.",
       "capability_areas": "Array of OPI functional capability areas this repo contributes to. Each entry has: area (the OPI capability domain: Storage Offload | Secure Networking | DPU Inventory & Telemetry | DPU Provisioning & Lifecycle), role (one of: api | reference-implementation | vendor-implementation | client | infrastructure | automation | specification | integration-testing | testing-tool), description (how this repo contributes technically to that capability area). NOTE: capability_areas describes what a repo CAN do technically. It is distinct from blueprints, which are official validated production deployments.",
       "blueprints": "Array of official OPI Blueprints this repo has been validated in. Per the OPI Blueprint Framework, a Blueprint is a fully documented, partner-attributed, production-grade deployment pattern with BOM, architecture diagram, deployment guide, IaC artifacts, and validated test results. Empty array means the repo has not yet been included in an official Blueprint. Each entry has: name, status (official | draft | proposed), partners (list of contributing vendors/integrators), hardware, software, description, blueprint_url.",
-      "keywords": "Functional area tags describing what this repo does. Used for filtering and discovery. Values: Storage | Networking | Security | Inventory | Platform Management | Provisioning & Lifecycle. These are NOT OPI Blueprints \u2014 see the 'blueprints' array for blueprint participation."
+      "keywords": "Functional area tags describing what this repo does. Used for filtering and discovery. Values: Storage | Networking | Security | Inventory | Platform Management | Provisioning & Lifecycle. These are NOT OPI Blueprints — see the 'blueprints' array for blueprint participation."
     }
   }
 }
