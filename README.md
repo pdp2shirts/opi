@@ -1,10 +1,15 @@
 # **Open Programmable Infrastructure Project Vision Statement**
 
-[![MarkdownLint](https://github.com/opiproject/opi/actions/workflows/markdown.yml/badge.svg)](https://github.com/opiproject/opi/actions/workflows/markdown.yml)
+[![Linters](https://github.com/opiproject/opi/actions/workflows/linters.yml/badge.svg)](https://github.com/opiproject/opi/actions/workflows/linters.yml)
+[![License](https://img.shields.io/github/license/opiproject/opi?style=flat-square&color=blue&label=License)](https://github.com/opiproject/opi/blob/master/LICENSE)
 
 The objective of the OPI initiative is to foster a community-driven
 standards-based open ecosystem for next generation architectures and
 frameworks based on DPU/IPU-like technologies.
+
+## **TSC Charter**
+
+You can read the current [TSC Charter](Charters/Open_Programmable_Infrastructure_Technical_Charter_Final-06-9-2022.pdf).
 
 ## **OPI Project Goals**
 
@@ -16,19 +21,24 @@ frameworks based on DPU/IPU-like technologies.
   technologies when required
 * Provide implementation examples to validate the architectures/APIs
 
+OPI uses the term **DPU/IPU** to represent the entire class of DPU/IPU-like
+devices, and can refer to either the system containing a DPU/IPU-like device
+or to the device itself. In cases where brevity is needed in the codebase,
+OPI developers can use the term xPU to abbreviate DPU/IPU-like device.
+
 For more details, see the full [page](GOALS.md).
 
 ## **OPI Project Backgrounder**
 
 A new class of cloud and datacenter infrastructure is emerging into the
-marketplace. This new infrastructure element, often referred as Data Processing
+marketplace. This new infrastructure element, often referred to as Data Processing
 Unit (DPU) or Infrastructure Processing Unit (IPU), takes the form of a server
-hosted PCIe add-in card or on-board chip(s), containing one or more ASIC’s or
-FPGA's, usually anchored around a single powerful SoC device. The DPU/IPU-like
+hosted PCIe add-in card or on-board chip(s), containing one or more ASICs or
+FPGAs, usually anchored around a single powerful SoC device. The DPU/IPU-like
 devices have their roots in the evolution of SmartNIC devices but separate
 themselves from that legacy in several important ways.
 
-While a Smart NIC is clearly part of its host node’s compute system and exists
+While a SmartNIC is clearly part of its host node’s compute system and exists
 to closely interact with and offload node hosted applications, the DPU/IPU
 dispenses with this secondary role. Instead, the DPU/IPU presents itself as a
 complete compute system unto itself with the following key characteristics:
@@ -99,7 +109,7 @@ collaborative, multi-vendor, innovation driven, ecosystem similar to what has
 occurred with the Kubernetes and Container environments?
 
 The OPI project is being created to address these questions and to foster the
-emergence of such an open and creative software eco-system for DPU/IPU based
+emergence of such an open and creative software ecosystem for DPU/IPU based
 cloud infrastructure. The project intends to delineate what a DPU/IPU is, to
 loosely define a framework(s) and architecture for a DPU/IPU-based software
 stack(s) applicable to any vendors hardware solution, to allow the creation of
@@ -119,4 +129,4 @@ the elements of the DPU/IPU ecosystem:
 
 This project welcomes contributions and suggestions.  We are happy to have the Community involved via submission of **Issues and Pull Requests** (with substantive content or even just fixes). We are hoping for the documents, test framework, etc. to become a community process with active engagement.  PRs can be reviewed by by any number of people, and a maintainer may accept.
 
-See [CONTRIBUTING](CONTRIBUTING.md) and [GitHub Basic Process](doc-github-rules.md) for more details.
+See [CONTRIBUTING](CONTRIBUTING.md) and [GitHub Basic Process](Policies/doc-github-rules.md) for more details.
